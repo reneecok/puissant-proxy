@@ -1,0 +1,17 @@
+[Node]
+URLs = ["https://bsc-dataseed1.binance.org"]
+ExpectedVersion = "0.0.0.0"
+MaxConnPerNode = 100
+
+[Proxy]
+HTTPListenAddr = "localhost:8545"
+Concurrency = 10
+Timeout = "10s"
+PuissantReportURL = ""
+
+[Debug]
+ListenAddr = "localhost:6060"
+
+[Log]
+RootDir = "./logs"
+Level = "debug"
