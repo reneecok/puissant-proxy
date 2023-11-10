@@ -92,6 +92,8 @@ func (s *Proxy) ReportPuissant(ctx context.Context, report tUploadData) {
 	defer fasthttp.ReleaseRequest(req)
 	defer fasthttp.ReleaseResponse(resp)
 
+	log.Debugw("report packing result", "report", report)
+
 	// TODO get header
 	var msgSigner func([]byte) []byte
 
