@@ -77,12 +77,13 @@ type tUploadPuissant struct {
 	Txs    []*tUploadTransaction `json:"txs"`
 }
 
-type tUploadData struct {
+type tUploadDataWithText struct {
 	BlockNumber string             `json:"block"`
+	Text        string             `json:"text"`
 	Result      []*tUploadPuissant `json:"result"`
 }
 
-func (s *Proxy) ReportPuissant(ctx context.Context, report tUploadData) {
+func (s *Proxy) ReportPuissant(ctx context.Context, report tUploadDataWithText) {
 	method := "eth_reportPuissant"
 	start := time.Now()
 	defer recordLatency(method, start)
@@ -92,14 +93,14 @@ func (s *Proxy) ReportPuissant(ctx context.Context, report tUploadData) {
 	defer fasthttp.ReleaseRequest(req)
 	defer fasthttp.ReleaseResponse(resp)
 
-	log.Debugw("report packing result", "report", report)
+	log.Infow("report packing result", "report", report.Text)
 
-	// TODO get header
-	var msgSigner func([]byte) []byte
-
-	if err := doRequest(s.puissantReportUrl, report, req, resp, msgSigner); err != nil {
-		log.Errorw("❌ report packing result failed", "err", err)
-	}
+	//// TODO get header
+	//var msgSigner func([]byte) []byte
+	//
+	//if err := doRequest(s.puissantReportUrl, report, req, resp, msgSigner); err != nil {
+	//	log.Errorw("❌ report packing result failed", "err", err)
+	//}
 }
 
 func recordLatency(method string, start time.Time) {
