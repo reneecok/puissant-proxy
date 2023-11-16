@@ -1,12 +1,14 @@
 [Node]
 URLs = ["https://bsc-dataseed1.binance.org"]
-ExpectedVersion = "0.0.0.0"
+ExpectedVersion = "puissant"
 MaxConnPerNode = 100
 
 [Proxy]
 HTTPListenAddr = "localhost:8545"
 Concurrency = 10
 Timeout = "10s"
+TgToken = ""
+TgID = 9
 PuissantReportURL = ""
 
 [Debug]

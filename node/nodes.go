@@ -3,10 +3,12 @@ package node
 import (
 	"context"
 	"errors"
+	"strings"
+	"time"
+
 	"github.com/node-real/go-pkg/log"
 	"github.com/node-real/go-pkg/utils/syncutils"
 	"k8s.io/apimachinery/pkg/util/wait"
-	"time"
 
 	"github.com/reneecok/puissant-proxy/ethclient"
 )
@@ -106,7 +108,7 @@ func (n *nodes) statusProbe(ctx context.Context) {
 			continue
 		}
 
-		if version >= n.expectedVersion {
+		if strings.Contains(version, n.expectedVersion) {
 			v.SetActive(true)
 		} else {
 			v.SetActive(false)
